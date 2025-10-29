@@ -16,21 +16,17 @@ The application requires two main components running concurrently: the server an
 ### 1. Start the Server (`server.go`)
 Open the first terminal window and run:
 ```bash
-go run server.go 
+go run server.go
 (The server will start listening on port 1234 and will log all incoming messages.)
 
 2. Start the Client(s) (client.go)
-Open one or more additional terminal windows for the clients. For each client, run:
-
-
-go run client.go
+Open one or more additional terminal windows for the clients. For each client, run:go run client.go
 (You will be prompted to enter a username. The client will run forever until you type exit or hit Ctrl+C.)
 
 Interaction
 Clients use bufio.NewReader(os.Stdin) to read the whole message, even if it contains spaces.
 
 Each time a message is sent, the client displays the entire chat history (fetched from the server in the same RPC call).
-
 ⚙️ Project Implementation Details (Simple Documentation)
 This is a summary of the implementation details:
 
