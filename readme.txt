@@ -40,4 +40,25 @@ The client will run until you type **`exit`** or press **Ctrl+C**.
 
 ## 💬 Interaction
 
-- Clients us
+- Clients use `bufio.NewReader(os.Stdin)` to read the entire message (including spaces).
+- Each time a message is sent, the client displays the **entire chat history** (fetched from the server in the same RPC call).
+
+---
+
+## ⚙️ Implementation Details
+
+**Server (`server.go`)**
+- Registers the `Chat` service.
+- Uses a slice (`messages []Message`) and a mutex (`sync.Mutex`) to store and protect chat history.
+
+**RPC Mechanism**
+- `Chat.SendMessage` RPC method stores the new message and returns the full, updated chat history to the client.
+- This satisfies the requirement for the server to return history when a message is sent.
+
+---
+
+## ▶️ Running Application Video
+
+🎥 **Link to video demo:**  
+[Click to watch on Google Drive](https://drive.google.com/file/d/1AsrOrD4nc0tAwMlzkjzOqeVIBfk4ZAFE/view?usp=sharing)
+
